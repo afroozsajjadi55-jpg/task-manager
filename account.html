@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Task Manager — My Account</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 20% 15%,
+                    rgba(39,141,255,.10),
+                    transparent 32%
+                ),
+                #080a0f;
+
+            color: white;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+
+            width: 100%;
+            height: 74px;
+
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(8,10,15,.76);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.06);
+        }
+
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+
+        .logo-box {
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #48a9ff,
+                    #1977ff
+                );
+
+            font-size: 23px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 0 28px
+                rgba(40,140,255,.25);
+        }
+
+
+        .nav-actions {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .home-link {
+
+            color: #9ca6b5;
+
+            padding: 10px 14px;
+
+            border-radius: 9px;
+
+            transition: .25s;
+        }
+
+
+        .home-link:hover {
+
+            color: white;
+
+            background: #141922;
+        }
+
+
+        .logout-top {
+
+            padding: 10px 14px;
+
+            border-radius: 9px;
+
+            border: 1px solid #2c343f;
+
+            background: #161b23;
+
+            color: #adb6c2;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+
+        .logout-top:hover {
+
+            color: white;
+
+            background: #1c222c;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        main {
+
+            width: min(1050px, 88%);
+
+            margin: auto;
+
+            padding: 140px 0 90px;
+        }
+
+
+        .eyebrow {
+
+            color: #59adff;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: .4px;
+
+            margin-bottom: 10px;
+        }
+
+
+        h1 {
+
+            font-size: clamp(45px, 6vw, 68px);
+
+            letter-spacing: -3px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .subtitle {
+
+            color: #7f8999;
+
+            font-size: 15px;
+
+            margin-bottom: 38px;
+        }
+
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+
+            padding: 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #131820,
+                    #0f1319
+                );
+
+            border: 1px solid #28313c;
+
+            border-radius: 19px;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.28);
+
+            margin-bottom: 18px;
+        }
+
+
+        .profile-left {
+
+            display: flex;
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        .avatar {
+
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #328fff,
+                    #176fde
+                );
+
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+
+        .profile-info h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .profile-info p {
+
+            color: #778292;
+
+            font-size: 13px;
+        }
+
+
+        .plan-badge {
+
+            padding: 8px 12px;
+
+            border-radius: 100px;
+
+            background: #171f2b;
+
+            border: 1px solid #2c3a4c;
+
+            color: #63b2ff;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= GRID ================= */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .info-card {
+
+            min-height: 165px;
+
+            padding: 23px;
+
+            border-radius: 17px;
+
+            background: #11151c;
+
+            border: 1px solid #262e39;
+
+            transition: .3s;
+        }
+
+
+        .info-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #3a769d;
+        }
+
+
+        .card-label {
+
+            color: #57aaff;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+
+        .info-card h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .info-card p {
+
+            color: #7c8797;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* ================= PREMIUM ================= */
+
+        .premium-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            border: 1px solid #347fad;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #16212e,
+                    #0d1218
+                );
+
+            margin-bottom: 18px;
+        }
+
+
+        .premium-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 270px;
+            height: 270px;
+
+            right: -100px;
+            top: -120px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(46,145,255,.13);
+
+            filter: blur(75px);
+        }
+
+
+        .premium-content {
+
+            position: relative;
+        }
+
+
+        .premium-label {
+
+            color: #63b2ff;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .premium-card h2 {
+
+            font-size: 29px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .premium-card p {
+
+            max-width: 620px;
+
+            color: #7e8998;
+
+            line-height: 1.65;
+
+            font-size: 13px;
+
+            margin-bottom: 19px;
+        }
+
+
+        .premium-features {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .premium-feature {
+
+            padding: 7px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(255,255,255,.04);
+
+            border: 1px solid #2b3948;
+
+            color: #9ca6b5;
+
+            font-size: 11px;
+        }
+
+
+        .premium-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 12px 18px;
+
+            border-radius: 9px;
+
+            background: #278dff;
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+            transition: .3s;
+        }
+
+
+        .premium-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(39,141,255,.24);
+        }
+
+
+        .premium-status {
+
+            margin-top: 13px;
+
+            color: #63b2ff;
+
+            font-size: 12px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            padding: 30px 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            border-top:
+                1px solid #202630;
+
+            color: #667181;
+
+            font-size: 12px;
+        }
+
+
+        /* ================= LOADING ================= */
+
+        .loading {
+
+            color: #737e8d;
+
+            padding: 35px 0;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 800px) {
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .profile-card {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            nav {
+
+                padding: 0 5%;
+            }
+
+
+            .home-link {
+
+                display: none;
+            }
+
+
+            main {
+
+                width: 90%;
+
+                padding-top: 125px;
+            }
+
+
+            h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .premium-card {
+
+                padding: 25px;
+            }
+
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <div class="logo-box">
+                T
+            </div>
+
+            Task Manager
+
+        </a>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="index.html"
+                class="home-link"
+            >
+                Home
+            </a>
+
+
+            <button
+                class="logout-top"
+                id="logoutButton"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+
+        <div class="eyebrow">
+            ACCOUNT CENTER
+        </div>
+
+
+        <h1>
+            My Account
+        </h1>
+
+
+        <p class="subtitle">
+            Manage your Task Manager account and plan.
+        </p>
+
+
+        <div id="loading" class="loading">
+            Loading your account...
+        </div>
+
+
+        <div id="accountContent" style="display:none;">
+
+
+            <!-- PROFILE -->
+
+            <div class="profile-card">
+
+                <div class="profile-left">
+
+                    <div
+                        class="avatar"
+                        id="avatar"
+                    >
+                        T
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <h2 id="userEmail">
+                            your@email.com
+                        </h2>
+
+                        <p>
+                            Task Manager account
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="plan-badge"
+                    id="planBadge"
+                >
+                    FREE PLAN
+                </div>
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="dashboard-grid">
+
+
+                <div class="info-card">
+
+                    <div class="card-label">
+                        ACCOUNT
+                    </div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p id="emailCard">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="card-label">
+                        PLAN
+                    </div>
+
+                    <h3 id="planTitle">
+                        Free
+                    </h3>
+
+                    <p id="planDescription">
+                        You're using the Free plan.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="card-label">
+                        STATUS
+                    </div>
+
+                    <h3>
+                        Account Active
+                    </h3>
+
+                    <p>
+                        Your account is ready to use.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PREMIUM -->
+
+            <div class="premium-card">
+
+                <div class="premium-content">
+
+                    <div
+                        class="premium-label"
+                        id="premiumLabel"
+                    >
+                        UPGRADE YOUR EXPERIENCE
+                    </div>
+
+
+                    <h2 id="premiumTitle">
+                        Unlock Premium.
+                    </h2>
+
+
+                    <p id="premiumDescription">
+                        Get unlimited tasks, task dates,
+                        priority tools and more.
+                    </p>
+
+
+                    <div
+                        class="premium-features"
+                        id="premiumFeatures"
+                    >
+
+                        <span class="premium-feature">
+                            ∞ Unlimited Tasks
+                        </span>
+
+                        <span class="premium-feature">
+                            📅 Task Dates
+                        </span>
+
+                        <span class="premium-feature">
+                            ⭐ Priority
+                        </span>
+
+                        <span class="premium-feature">
+                            🎨 More Customization
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="premium.html"
+                        class="premium-button"
+                        id="premiumButton"
+                    >
+                        Explore Premium →
+                    </a>
+
+
+                    <div
+                        class="premium-status"
+                        id="premiumStatus"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div>
+            © 2026 Task Manager
+        </div>
+
+
+        <div>
+            Plan. Focus. Finish.
+        </div>
+
+    </footer>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script>
+
+        async function loadAccount() {
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/me"
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Server error"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.logged_in) {
+
+                    window.location.href =
+                        "auth.html";
+
+                    return;
+
+                }
+
+
+                const user =
+                    data.user;
+
+
+                /* EMAIL */
+
+                document.getElementById(
+                    "userEmail"
+                ).textContent =
+                    user.email;
+
+
+                document.getElementById(
+                    "emailCard"
+                ).textContent =
+                    user.email;
+
+
+                /* AVATAR */
+
+                document.getElementById(
+                    "avatar"
+                ).textContent =
+                    user.email
+                        .charAt(0)
+                        .toUpperCase();
+
+
+                /* PLAN */
+
+                if (user.premium) {
+
+                    document.getElementById(
+                        "planBadge"
+                    ).textContent =
+                        "✦ PREMIUM";
+
+
+                    document.getElementById(
+                        "planTitle"
+                    ).textContent =
+                        "Premium";
+
+
+                    document.getElementById(
+                        "planDescription"
+                    ).textContent =
+                        user.plan
+                            ? "Active plan: " +
+                              user.plan
+                            : "Premium is active.";
+
+
+                    document.getElementById(
+                        "premiumLabel"
+                    ).textContent =
+                        "PREMIUM ACTIVE";
+
+
+                    document.getElementById(
+                        "premiumTitle"
+                    ).textContent =
+                        "You're all set. ✦";
+
+
+                    document.getElementById(
+                        "premiumDescription"
+                    ).textContent =
+                        "Your Premium features are active.";
+
+
+                    document.getElementById(
+                        "premiumButton"
+                    ).textContent =
+                        "Premium Details →";
+
+
+                    document.getElementById(
+                        "premiumStatus"
+                    ).textContent =
+                        "✓ Premium is active";
+
+                }
+
+
+                document.getElementById(
+                    "loading"
+                ).style.display =
+                    "none";
+
+
+                document.getElementById(
+                    "accountContent"
+                ).style.display =
+                    "block";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                document.getElementById(
+                    "loading"
+                ).textContent =
+                    "Could not connect to the server.";
+
+            }
+
+        }
+
+
+        /* LOGOUT */
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    try {
+
+                        await fetch(
+                            "/api/logout",
+                            {
+                                method: "POST"
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.error(error);
+
+                    }
+
+
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+
+        loadAccount();
+
+    </script>
+
+</body>
+
+</html>

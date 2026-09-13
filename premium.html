@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Task Manager Premium</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #07090d;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 74px;
+
+            padding: 0 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            z-index: 1000;
+
+            background:
+                rgba(7,9,13,.76);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.06);
+        }
+
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+
+        .logo-box {
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #4aa9ff,
+                    #1778ff
+                );
+
+            font-size: 23px;
+            font-weight: 900;
+
+            box-shadow:
+                0 0 28px
+                rgba(40,140,255,.25);
+        }
+
+
+        .back {
+
+            color: #929baa;
+
+            transition: .25s;
+        }
+
+
+        .back:hover {
+            color: white;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            min-height: 65vh;
+
+            padding:
+                155px 7% 75px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            left: 50%;
+            top: -360px;
+
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                rgba(42,142,255,.13);
+
+            filter: blur(130px);
+        }
+
+
+        .premium-label {
+
+            position: relative;
+
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 100px;
+
+            border: 1px solid #30455e;
+
+            color: #6cb7ff;
+
+            background:
+                rgba(15,28,43,.72);
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero h1 {
+
+            position: relative;
+
+            font-size:
+                clamp(52px, 7vw, 82px);
+
+            letter-spacing: -4px;
+
+            line-height: .95;
+
+            margin-bottom: 19px;
+        }
+
+
+        .hero h1 span {
+            color: #348fff;
+        }
+
+
+        .hero p {
+
+            position: relative;
+
+            max-width: 610px;
+
+            margin: auto;
+
+            color: #8993a3;
+
+            line-height: 1.75;
+
+            font-size: 17px;
+        }
+
+
+        /* ================= VALUE ================= */
+
+        .value-section {
+
+            padding:
+                45px 7% 80px;
+        }
+
+
+        .value-grid {
+
+            max-width: 1080px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 16px;
+        }
+
+
+        .value-card {
+
+            padding: 27px;
+
+            border-radius: 17px;
+
+            border: 1px solid #252d38;
+
+            background: #11151c;
+
+            transition: .35s;
+        }
+
+
+        .value-card:hover {
+
+            transform: translateY(-7px);
+
+            border-color: #3e789f;
+        }
+
+
+        .value-icon {
+
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #152439;
+
+            color: #55aaff;
+
+            margin-bottom: 18px;
+        }
+
+
+        .value-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .value-card p {
+
+            color: #798493;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* ================= FEATURES ================= */
+
+        .features-section {
+
+            padding:
+                90px 7%;
+        }
+
+
+        .section-label {
+
+            text-align: center;
+
+            color: #459eff;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            font-size: 43px;
+
+            letter-spacing: -1px;
+        }
+
+
+        .section-description {
+
+            max-width: 590px;
+
+            margin: 14px auto 48px;
+
+            text-align: center;
+
+            color: #7f8998;
+
+            line-height: 1.7;
+        }
+
+
+        .premium-features {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 15px;
+        }
+
+
+        .premium-feature {
+
+            padding: 27px;
+
+            border-radius: 17px;
+
+            background: #11141a;
+
+            border: 1px solid #252c36;
+
+            transition: .35s;
+        }
+
+
+        .premium-feature:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color: #397aa3;
+        }
+
+
+        .premium-feature h3 {
+
+            margin-bottom: 9px;
+
+            font-size: 18px;
+        }
+
+
+        .premium-feature p {
+
+            color: #7f8998;
+
+            line-height: 1.65;
+
+            font-size: 13px;
+        }
+
+
+        .premium-tag {
+
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            padding: 5px 8px;
+
+            font-size: 10px;
+
+            border-radius: 100px;
+
+            background: #17283d;
+
+            color: #63b2ff;
+        }
+
+
+        /* ================= DATE FEATURE ================= */
+
+        .date-showcase {
+
+            max-width: 1000px;
+
+            margin: 20px auto 0;
+
+            padding: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 45px;
+
+            border-radius: 22px;
+
+            border: 1px solid #293442;
+
+            background:
+                radial-gradient(
+                    circle at 80% 50%,
+                    rgba(39,137,255,.12),
+                    transparent 55%
+                );
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.28);
+        }
+
+
+        .date-copy {
+
+            max-width: 470px;
+        }
+
+
+        .date-copy h3 {
+
+            font-size: 31px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .date-copy p {
+
+            color: #808a9a;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+
+        .task-example {
+
+            width: 350px;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: #141922;
+
+            border: 1px solid #303a47;
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,.28);
+        }
+
+
+        .task-example-title {
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            margin-bottom: 16px;
+        }
+
+
+        .task-example-row {
+
+            display: flex;
+
+            gap: 8px;
+
+            color: #9ba5b4;
+
+            font-size: 12px;
+
+            margin-top: 8px;
+        }
+
+
+        .task-example-row span:first-child {
+
+            color: #5aafff;
+        }
+
+
+        /* ================= COMPARISON ================= */
+
+        .comparison-section {
+
+            padding:
+                100px 7%;
+        }
+
+
+        .comparison {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            overflow: hidden;
+
+            border-radius: 17px;
+
+            border: 1px solid #292f38;
+
+            background: #11141a;
+        }
+
+
+        .comparison-row {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr;
+
+            border-bottom:
+                1px solid #242a34;
+        }
+
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .comparison-cell {
+
+            padding: 16px;
+
+            font-size: 13px;
+
+            color: #8791a0;
+        }
+
+
+        .comparison-row:first-child
+        .comparison-cell {
+
+            color: white;
+
+            font-weight: bold;
+
+            background: #151922;
+        }
+
+
+        .comparison-cell:nth-child(2) {
+
+            text-align: center;
+        }
+
+
+        .comparison-cell:nth-child(3) {
+
+            text-align: center;
+
+            color: #54aaff;
+        }
+
+
+        /* ================= PRICING ================= */
+
+        .pricing-section {
+
+            padding:
+                60px 7% 120px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(35,119,220,.08),
+                    transparent 60%
+                );
+        }
+
+
+        .plans {
+
+            max-width: 950px;
+
+            margin: 50px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 18px;
+        }
+
+
+        .plan {
+
+            position: relative;
+
+            padding: 32px;
+
+            border-radius: 19px;
+
+            background: #11151b;
+
+            border: 1px solid #282f39;
+
+            transition: .35s;
+        }
+
+
+        .plan:hover {
+
+            transform: translateY(-8px);
+        }
+
+
+        .plan.featured {
+
+            border-color: #338fff;
+
+            box-shadow:
+                0 0 50px
+                rgba(42,143,255,.10);
+        }
+
+
+        .popular {
+
+            position: absolute;
+
+            right: 17px;
+            top: 17px;
+
+            padding: 6px 9px;
+
+            border-radius: 100px;
+
+            color: white;
+
+            background: #278dff;
+
+            font-size: 9px;
+
+            font-weight: bold;
+        }
+
+
+        .plan h3 {
+
+            margin-bottom: 8px;
+
+            font-size: 21px;
+        }
+
+
+        .price {
+
+            font-size: 41px;
+
+            font-weight: bold;
+
+            margin: 17px 0 8px;
+        }
+
+
+        .price span {
+
+            color: #6d7786;
+
+            font-size: 12px;
+
+            font-weight: normal;
+        }
+
+
+        .plan-description {
+
+            color: #7d8796;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            min-height: 43px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .plan ul {
+
+            list-style: none;
+
+            margin-bottom: 25px;
+        }
+
+
+        .plan li {
+
+            padding: 8px 0;
+
+            color: #a3acb9;
+
+            font-size: 13px;
+        }
+
+
+        .plan li::before {
+
+            content: "✓";
+
+            color: #4ea8ff;
+
+            margin-right: 8px;
+        }
+
+
+        .plan-button {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            background: #1a202a;
+
+            color: white;
+
+            border: 1px solid #303845;
+        }
+
+
+        .plan-button.primary {
+
+            background: #278dff;
+
+            border-color: #278dff;
+
+            box-shadow:
+                0 10px 28px
+                rgba(39,141,255,.20);
+        }
+
+
+        /* ================= CTA ================= */
+
+        .final-cta {
+
+            padding:
+                100px 7%;
+
+            text-align: center;
+        }
+
+
+        .final-cta h2 {
+
+            font-size: 43px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .final-cta p {
+
+            color: #818b9a;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        .cta-button {
+
+            display: inline-block;
+
+            padding: 14px 22px;
+
+            border-radius: 10px;
+
+            color: white;
+
+            background: #278dff;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 12px 35px
+                rgba(39,141,255,.22);
+
+            transition: .3s;
+        }
+
+
+        .cta-button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 17px 45px
+                rgba(39,141,255,.34);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            padding: 30px 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            border-top:
+                1px solid #20262f;
+
+            color: #657080;
+
+            font-size: 12px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 900px) {
+
+            .value-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .premium-features {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .date-showcase {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+
+            .plans {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            nav {
+
+                padding: 0 5%;
+            }
+
+
+            .hero {
+
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+
+            .hero h1 {
+
+                font-size: 53px;
+
+                letter-spacing: -3px;
+            }
+
+
+            .task-example {
+
+                width: 100%;
+            }
+
+
+            .date-showcase {
+
+                padding: 30px 20px;
+            }
+
+
+            .section-title {
+
+                font-size: 34px;
+            }
+
+
+            .final-cta h2 {
+
+                font-size: 34px;
+            }
+
+
+            footer {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-box">
+                T
+            </div>
+
+            Task Manager
+
+        </a>
+
+
+        <a href="index.html" class="back">
+
+            ← Back to Home
+
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="premium-label">
+            ✦ TASK MANAGER PREMIUM
+        </div>
+
+
+        <h1>
+            Upgrade the way<br>
+            you <span>work.</span>
+        </h1>
+
+
+        <p>
+            Unlock more control, more customization
+            and more powerful ways to organize your day.
+        </p>
+
+    </section>
+
+
+    <!-- VALUE -->
+
+    <section class="value-section">
+
+        <div class="value-grid">
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    ∞
+                </div>
+
+                <h3>
+                    Unlimited Tasks
+                </h3>
+
+                <p>
+                    Go beyond the Free plan
+                    and keep everything in one workspace.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    📅
+                </div>
+
+                <h3>
+                    Task Dates
+                </h3>
+
+                <p>
+                    Give every important task
+                    a specific date and stay organized.
+                </p>
+
+            </div>
+
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    More Customization
+                </h3>
+
+                <p>
+                    Unlock more ways to personalize
+                    your productivity workspace.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PREMIUM FEATURES -->
+
+    <section class="features-section">
+
+        <div class="section-label">
+            PREMIUM FEATURES
+        </div>
+
+
+        <h2 class="section-title">
+            More power. Still simple.
+        </h2>
+
+
+        <p class="section-description">
+            Premium gives you useful features without
+            turning Task Manager into a complicated tool.
+        </p>
+
+
+        <div class="premium-features">
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Unlimited Tasks
+                </h3>
+
+                <p>
+                    Remove the Free plan task limit
+                    and keep as many tasks as you need.
+                </p>
+
+            </div>
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Task Dates
+                </h3>
+
+                <p>
+                    Add a date to your tasks and
+                    organize your work by day.
+                </p>
+
+            </div>
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Task Priority
+                </h3>
+
+                <p>
+                    Mark important tasks so you know
+                    what deserves your attention first.
+                </p>
+
+            </div>
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Custom Themes
+                </h3>
+
+                <p>
+                    Unlock more customization and
+                    make your workspace feel personal.
+                </p>
+
+            </div>
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Advanced Timer
+                </h3>
+
+                <p>
+                    Get more control over your
+                    focused work sessions.
+                </p>
+
+            </div>
+
+
+            <div class="premium-feature">
+
+                <div class="premium-tag">
+                    PREMIUM
+                </div>
+
+                <h3>
+                    Future Features
+                </h3>
+
+                <p>
+                    Premium keeps improving as
+                    new productivity features arrive.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATE SHOWCASE -->
+
+    <section>
+
+        <div class="section-label">
+            A BETTER WAY TO PLAN
+        </div>
+
+
+        <h2 class="section-title">
+            Give your tasks a day.
+        </h2>
+
+
+        <p class="section-description">
+            Premium lets you combine your task,
+            date and time in one place.
+        </p>
+
+
+        <div class="date-showcase">
+
+
+            <div class="date-copy">
+
+                <h3>
+                    Know what to do — and when.
+                </h3>
+
+
+                <p>
+                    Add a date to important tasks,
+                    then combine it with the task time
+                    to keep your schedule clear.
+                </p>
+
+            </div>
+
+
+            <div class="task-example">
+
+                <div class="task-example-title">
+                    Finish Python Project
+                </div>
+
+
+                <div class="task-example-row">
+
+                    <span>📅</span>
+
+                    <span>
+                        September 18, 2026
+                    </span>
+
+                </div>
+
+
+                <div class="task-example-row">
+
+                    <span>⏰</span>
+
+                    <span>
+                        08:30 PM
+                    </span>
+
+                </div>
+
+
+                <div class="task-example-row">
+
+                    <span>★</span>
+
+                    <span>
+                        High Priority
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARISON -->
+
+    <section class="comparison-section">
+
+        <div class="section-label">
+            FREE VS PREMIUM
+        </div>
+
+
+        <h2 class="section-title">
+            Choose what fits you.
+        </h2>
+
+
+        <p class="section-description">
+            Start free and upgrade when you need more.
+        </p>
+
+
+        <div class="comparison">
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Feature
+                </div>
+
+                <div class="comparison-cell">
+                    Free
+                </div>
+
+                <div class="comparison-cell">
+                    Premium
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Tasks
+                </div>
+
+                <div class="comparison-cell">
+                    4
+                </div>
+
+                <div class="comparison-cell">
+                    Unlimited
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Task Time
+                </div>
+
+                <div class="comparison-cell">
+                    ✓
+                </div>
+
+                <div class="comparison-cell">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Task Date
+                </div>
+
+                <div class="comparison-cell">
+                    —
+                </div>
+
+                <div class="comparison-cell">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Timer
+                </div>
+
+                <div class="comparison-cell">
+                    ✓
+                </div>
+
+                <div class="comparison-cell">
+                    Advanced
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Themes
+                </div>
+
+                <div class="comparison-cell">
+                    5
+                </div>
+
+                <div class="comparison-cell">
+                    More
+                </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+                <div class="comparison-cell">
+                    Priority Tasks
+                </div>
+
+                <div class="comparison-cell">
+                    —
+                </div>
+
+                <div class="comparison-cell">
+                    ✓
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+
+    <section class="pricing-section">
+
+        <div class="section-label">
+            SIMPLE PRICING
+        </div>
+
+
+        <h2 class="section-title">
+            Premium without the premium price.
+        </h2>
+
+
+        <p class="section-description">
+            Keep it simple. Upgrade when you need more.
+        </p>
+
+
+        <div class="plans">
+
+
+            <!-- MONTHLY -->
+
+            <div class="plan featured">
+
+                <div class="popular">
+                    MOST POPULAR
+                </div>
+
+
+                <h3>
+                    Premium Monthly
+                </h3>
+
+
+                <div class="price">
+                    $2.99
+                    <span>/ month</span>
+                </div>
+
+
+                <div class="plan-description">
+                    Full Premium features with flexible monthly access.
+                </div>
+
+
+                <ul>
+
+                    <li>
+                        Unlimited tasks
+                    </li>
+
+                    <li>
+                        Task dates
+                    </li>
+
+                    <li>
+                        Task times
+                    </li>
+
+                    <li>
+                        Advanced timer
+                    </li>
+
+                    <li>
+                        Premium customization
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="#"
+                    class="plan-button primary"
+                    onclick="choosePlan('monthly'); return false;"
+                >
+                Get Premium
+                </a>
+
+            </div>
+
+
+            <!-- YEARLY -->
+
+            <div class="plan">
+
+                <h3>
+                    Premium Yearly
+                </h3>
+
+
+                <div class="price">
+                    $24.99
+                    <span>/ year</span>
+                </div>
+
+
+                <div class="plan-description">
+                    The best value for long-term Task Manager users.
+                </div>
+
+
+                <ul>
+
+                    <li>
+                        Everything in Premium
+                    </li>
+
+                    <li>
+                        Save compared with monthly
+                    </li>
+
+                    <li>
+                        Future Premium updates
+                    </li>
+
+                    <li>
+                        Unlimited tasks
+                    </li>
+
+                    <li>
+                        Task dates
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="#"
+                    class="plan-button"
+                    onclick="choosePlan('yearly'); return false;"
+                    >
+                    Choose Yearly
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="final-cta">
+
+        <h2>
+            Ready to level up?
+        </h2>
+
+
+        <p>
+            Start with Free. Upgrade when you need more.
+        </p>
+
+
+        <a
+            href="index.html#login"
+            class="cta-button"
+        >
+            Create Your Account →
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            © 2026 Task Manager
+        </div>
+
+
+        <div>
+            Plan. Focus. Finish.
+        </div>
+
+    </footer>
+
+
+    <script>
+        function choosePlan(plan) {
+
+    localStorage.setItem(
+        "taskManagerSelectedPlan",
+        plan
+    );
+
+
+    const currentUser =
+        localStorage.getItem(
+            "taskManagerCurrentUser"
+        );
+
+
+    if (!currentUser) {
+
+        window.location.href =
+            "auth.html?plan=" +
+            encodeURIComponent(plan);
+
+        return;
+    }
+
+
+    let users =
+        JSON.parse(
+            localStorage.getItem(
+                "taskManagerUsers"
+            )
+        ) || {};
+
+
+    if (!users[currentUser]) {
+
+        window.location.href =
+            "auth.html?plan=" +
+            encodeURIComponent(plan);
+
+        return;
+    }
+
+
+    /*
+        DEMO PREMIUM ACTIVATION
+
+        فعلاً پرداخت واقعی نداریم.
+        برای تست سایت Premium را فعال می‌کنیم.
+    */
+
+    users[currentUser].premium = true;
+
+    users[currentUser].plan = plan;
+
+    localStorage.setItem(
+        "taskManagerUsers",
+        JSON.stringify(users)
+    );
+
+
+    window.location.href =
+        "dashboard.html";
+
+}
+    </script>
+    
+<script>
+
+async function choosePlan(plan) {
+
+    try {
+
+        const userResponse =
+            await fetch("/api/me");
+
+        const userData =
+            await userResponse.json();
+
+
+        if (!userData.logged_in) {
+
+            window.location.href =
+                "auth.html?plan=" +
+                encodeURIComponent(plan);
+
+            return;
+        }
+
+
+        const response =
+            await fetch(
+                "/api/upgrade",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            plan: plan
+                        })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            alert(
+                data.message ||
+                "Could not activate Premium."
+            );
+
+            return;
+        }
+
+
+        alert(
+            "Premium activated successfully!"
+        );
+
+
+        window.location.href =
+            "dashboard.html";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not connect to the server."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
