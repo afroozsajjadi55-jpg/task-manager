@@ -967,6 +967,50 @@
             }
 
         }
+        @keyframes premiumHeroIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
+    animation: premiumHeroIn .7s ease both;
+}
+
+.value-card,
+.premium-feature,
+.plan,
+.comparison {
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.value-card:hover,
+.premium-feature:hover,
+.plan:hover {
+    transform: translateY(-7px);
+}
+
+.plan-button,
+.cta-button {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.plan-button:hover,
+.cta-button:hover {
+    transform: translateY(-3px);
+}
 
     </style>
 
@@ -1610,12 +1654,12 @@
         </p>
 
 
-        <a
-            href="index.html#login"
-            class="cta-button"
-        >
-            Create Your Account →
-        </a>
+<a
+    href="auth.html"
+    class="cta-button"
+>
+    Create Your Account →
+</a>
 
     </section>
 
@@ -1635,72 +1679,6 @@
 
     </footer>
 
-
-    <script>
-        function choosePlan(plan) {
-
-    localStorage.setItem(
-        "taskManagerSelectedPlan",
-        plan
-    );
-
-
-    const currentUser =
-        localStorage.getItem(
-            "taskManagerCurrentUser"
-        );
-
-
-    if (!currentUser) {
-
-        window.location.href =
-            "auth.html?plan=" +
-            encodeURIComponent(plan);
-
-        return;
-    }
-
-
-    let users =
-        JSON.parse(
-            localStorage.getItem(
-                "taskManagerUsers"
-            )
-        ) || {};
-
-
-    if (!users[currentUser]) {
-
-        window.location.href =
-            "auth.html?plan=" +
-            encodeURIComponent(plan);
-
-        return;
-    }
-
-
-    /*
-        DEMO PREMIUM ACTIVATION
-
-        فعلاً پرداخت واقعی نداریم.
-        برای تست سایت Premium را فعال می‌کنیم.
-    */
-
-    users[currentUser].premium = true;
-
-    users[currentUser].plan = plan;
-
-    localStorage.setItem(
-        "taskManagerUsers",
-        JSON.stringify(users)
-    );
-
-
-    window.location.href =
-        "dashboard.html";
-
-}
-    </script>
     
 <script>
 

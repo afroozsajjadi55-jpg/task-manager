@@ -203,6 +203,41 @@
         .back:hover {
             color: white;
         }
+        @keyframes authCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card {
+    animation: authCardIn .6s ease both;
+}
+
+.logo {
+    transition: transform .3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.06) rotate(-3deg);
+}
+
+button {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(39,141,255,.18);
+}
 
     </style>
 
@@ -436,25 +471,20 @@
 
 
                 try {
+const response = await fetch(endpoint, {
+    method: "POST",
 
-                    const response =
-                        await fetch(
-                            endpoint,
-                            {
-                                method: "POST",
+    credentials: "same-origin",
 
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
+    headers: {
+        "Content-Type": "application/json"
+    },
 
-                                body:
-                                    JSON.stringify({
-                                        email,
-                                        password
-                                    })
-                            }
-                        );
+    body: JSON.stringify({
+        email,
+        password
+    })
+});;
 
 
                     const data =

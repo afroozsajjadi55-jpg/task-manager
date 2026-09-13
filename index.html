@@ -27,6 +27,25 @@
         a {
             text-decoration: none;
         }
+        /* ================= CLEAN HOME ================= */
+
+        #features {
+    padding-top: 95px;
+}
+
+        #themes {
+    padding-top: 95px;
+}
+
+        .premium-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+        .download {
+    padding-top: 85px;
+    padding-bottom: 95px;
+}
 
         /* ================= NAV ================= */
 
@@ -679,11 +698,49 @@
             transform: translateY(25px);
         }
 
-        .feature-card.show {
-            opacity: 1;
+.feature-card {
+    padding: 27px;
 
-            transform: translateY(0);
-        }
+    background: #11141a;
+
+    border: 1px solid #242a34;
+
+    border-radius: 17px;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    animation: featureIn .6s ease both;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: .08s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: .16s;
+}
+
+.feature-card:nth-child(4) {
+    animation-delay: .24s;
+}
+
+@keyframes featureIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
         .feature-card:hover {
             transform: translateY(-7px);
@@ -1185,7 +1242,208 @@
                 text-align: center;
                 gap: 10px;
             }
+            /* ================= DOWNLOAD ================= */
+
+        .download-section {
+    padding: 100px 7% 110px;
+    text-align: center;
+}
+
+        .download-grid {
+    max-width: 1050px;
+    margin: 45px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+        .download-card {
+    padding: 30px;
+
+    background: #11151c;
+    border: 1px solid #252d38;
+
+    border-radius: 18px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+        .download-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #3b8bd6;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.25);
+}
+
+        .download-icon {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #17283d;
+
+    color: #55aaff;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+        .download-card h3 {
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+        .download-card p {
+    color: #7f8998;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    min-height: 46px;
+
+    margin-bottom: 20px;
+}
+
+        .download-card .btn {
+    width: 100%;
+}
         }
+        @media(max-width: 800px) {
+
+        .download-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+         /* ================= GLOBAL ANIMATIONS ================= */
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: pageFadeIn .7s ease both;
+}
+
+.btn,
+.download-card,
+.feature-card,
+.theme-card,
+.premium-box,
+.app-card,
+.real-app {
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.download-card,
+.feature-card,
+.theme-card {
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+    .nav-signin {
+    padding: 10px 14px;
+    color: #aeb7c4;
+    border-radius: 9px;
+    transition: .25s;
+}
+
+.nav-signin:hover {
+    color: white;
+    background: #121720;
+}
+.nav-signin {
+    padding: 10px 14px;
+
+    color: #aeb7c4;
+
+    border-radius: 9px;
+
+    transition: .25s;
+}
+
+.nav-signin:hover {
+    color: white;
+    background: #121720;
+}
+
+.nav-account {
+    padding: 10px 14px;
+
+    color: #aeb7c4;
+
+    border-radius: 9px;
+
+    transition: .25s;
+}
+
+.nav-account:hover {
+    color: white;
+    background: #121720;
+}
+
+.nav-logout {
+    padding: 10px 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid #2c343f;
+
+    background: #161b23;
+
+    color: #adb6c2;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.nav-logout:hover {
+    background: #1c222c;
+    color: white;
+}
     </style>
 </head>
 
@@ -1227,17 +1485,18 @@
         </div>
 
 
-        <div class="nav-right">
+<div class="nav-right" id="navRight">
 
-            <a href="auth.html" class="btn btn-primary">
-                Get Started →
-            </a>
+    <a href="auth.html" class="nav-signin" id="signInButton">
+        Sign In
+    </a>
 
-            <a href="premium.html" class="nav-premium">
-                Get Premium
-            </a>
 
-        </div>
+    <a href="premium.html" class="nav-premium">
+        Get Premium
+    </a>
+
+</div>
 
     </nav>
 
@@ -1269,7 +1528,10 @@
             <div class="hero-actions">
 
                 <a href="#app" class="btn btn-primary">
-                    Explore the App →
+                    Explore the App 
+                </a>
+                <a href="#download" class="btn btn-primary">
+                Download App ↓
                 </a>
 
                 <a href="#features" class="btn btn-secondary">
@@ -1380,192 +1642,6 @@
 
     </section>
 
-
-    <!-- ================= STATS ================= -->
-
-    <div class="stats-strip">
-
-        <div class="stats">
-
-            <div class="stat">
-
-                <div class="stat-number">
-                    1
-                </div>
-
-                <div class="stat-text">
-                    Simple workspace
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-number">
-                    5
-                </div>
-
-                <div class="stat-text">
-                    Beautiful themes
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-number">
-                    24/7
-                </div>
-
-                <div class="stat-text">
-                    Your tasks, your way
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= WHY ================= -->
-
-    <section class="why-section">
-
-        <div class="section-label">
-            WHY TASK MANAGER
-        </div>
-
-        <h2 class="section-title">
-            Productivity without the noise.
-        </h2>
-
-        <p class="section-description">
-            Everything important stays visible.
-            Everything unnecessary stays out of the way.
-        </p>
-
-
-        <div class="why-layout">
-
-
-            <div class="why-big">
-
-                <h3>
-                    Built to feel simple.
-                </h3>
-
-                <p>
-                    Task Manager gives you the essentials
-                    without turning your workspace into a complicated dashboard.
-                </p>
-
-
-                <div class="why-list">
-
-                    <div class="why-item">
-
-                        <div class="why-check">
-                            ✓
-                        </div>
-
-                        <span>
-                            Quickly create and organize tasks.
-                        </span>
-
-                    </div>
-
-
-                    <div class="why-item">
-
-                        <div class="why-check">
-                            ✓
-                        </div>
-
-                        <span>
-                            Set task times and stay on schedule.
-                        </span>
-
-                    </div>
-
-
-                    <div class="why-item">
-
-                        <div class="why-check">
-                            ✓
-                        </div>
-
-                        <span>
-                            Focus with a built-in countdown timer.
-                        </span>
-
-                    </div>
-
-
-                    <div class="why-item">
-
-                        <div class="why-check">
-                            ✓
-                        </div>
-
-                        <span>
-                            Change the look with custom themes.
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="why-right">
-
-
-                <div class="why-small">
-
-                    <span class="mini-label">
-                        FOCUS
-                    </span>
-
-                    <h4>
-                        Less clutter. More doing.
-                    </h4>
-
-                    <p>
-                        A clean interface keeps your attention
-                        where it belongs.
-                    </p>
-
-                </div>
-
-
-                <div class="why-small">
-
-                    <span class="mini-label">
-                        CONTROL
-                    </span>
-
-                    <h4>
-                        Your workspace, your rules.
-                    </h4>
-
-                    <p>
-                        From themes to timers,
-                        make the workspace feel like yours.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
     <!-- ================= FEATURES ================= -->
 
     <section id="features">
@@ -1653,57 +1729,6 @@
                 <p>
                     Switch between multiple themes
                     and personalize your workspace.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= TIMER ================= -->
-
-    <section>
-
-        <div class="section-label">
-            FOCUS MODE
-        </div>
-
-        <h2 class="section-title">
-            Time is yours.
-        </h2>
-
-        <p class="section-description">
-            Set a timer, start working and let Task Manager
-            handle the countdown.
-        </p>
-
-
-        <div class="timer-showcase">
-
-            <div class="timer-ring">
-
-                <small>
-                    TIMER
-                </small>
-
-                <div class="showcase-time">
-                    24:18
-                </div>
-
-            </div>
-
-
-            <div class="timer-copy">
-
-                <h3>
-                    Stay in the zone.
-                </h3>
-
-                <p>
-                    A simple countdown designed for study,
-                    work, projects and focused sessions.
                 </p>
 
             </div>
@@ -1865,7 +1890,7 @@
             </div>
 
             <a href="premium.html" class="btn btn-primary">
-                Explore Premium →
+                Explore Premium 
             </a>
 
         </div>
@@ -1875,38 +1900,99 @@
 
     <!-- ================= DOWNLOAD ================= -->
 
-    <section class="download">
+    <section id="download" class="download-section">
 
-        <div class="section-label">
-            GET TASK MANAGER
-        </div>
+    <div class="section-label">
+        DOWNLOAD
+    </div>
 
-        <h2 class="section-title">
-            Ready to get things done?
-        </h2>
+    <h2 class="section-title">
+        Get Task Manager.
+    </h2>
 
-        <p class="section-description">
-            Start organizing your day with Task Manager.
-        </p>
+    <p class="section-description">
+        Choose your platform and start organizing your day.
+    </p>
 
+    <div class="download-grid">
 
-        <div class="download-buttons">
+        <div class="download-card">
 
-<a
-    href="#"
-    class="btn btn-primary"
-    onclick="alert('Windows download will be available soon!'); return false;"
->
-    Download for Windows
-</a>
+            <div class="download-icon">
+                ⊞
+            </div>
 
-            <a href="#" class="btn btn-secondary">
-                Download for macOS
+            <h3>
+                Windows
+            </h3>
+
+            <p>
+                Download the desktop version for Windows.
+            </p>
+
+            <a
+                href="#"
+                class="btn btn-primary"
+                onclick="alert('Windows download will be available soon!'); return false;"
+            >
+                Download for Windows
             </a>
 
         </div>
 
-    </section>
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                
+            </div>
+
+            <h3>
+                macOS
+            </h3>
+
+            <p>
+                The macOS version is currently in development.
+            </p>
+
+            <a
+                href="#"
+                class="btn btn-secondary"
+                onclick="alert('The macOS version is currently in development.'); return false;"
+            >
+                Coming Soon
+            </a>
+
+        </div>
+
+
+        <div class="download-card">
+
+            <div class="download-icon">
+                ▣
+            </div>
+
+            <h3>
+                Mobile
+            </h3>
+
+            <p>
+                The mobile version is currently in development.
+            </p>
+
+            <a
+                href="#"
+                class="btn btn-secondary"
+                onclick="alert('The mobile version is currently in development.'); return false;"
+            >
+                Coming Soon
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
     <!-- ================= FOOTER ================= -->
@@ -1923,47 +2009,89 @@
 
     </footer>
 
+<script>
+async function updateNavbar() {
 
-    <!-- ================= SCRIPT ================= -->
+    const navRight =
+        document.getElementById("navRight");
 
-    <script>
+    try {
 
-        const cards =
-            document.querySelectorAll(".reveal");
+        const response =
+            await fetch("/api/me", {
+                credentials: "same-origin"
+            });
 
+        if (!response.ok) {
+            throw new Error("Could not check login status");
+        }
 
-        const observer =
-            new IntersectionObserver(
-                (entries) => {
+        const data =
+            await response.json();
 
-                    entries.forEach(
-                        (entry) => {
+        if (data.logged_in) {
 
-                            if (
-                                entry.isIntersecting
-                            ) {
+            navRight.innerHTML = `
+                <a
+                    href="account.html"
+                    class="nav-account"
+                >
+                    My Account
+                </a>
 
-                                entry.target.classList.add(
-                                    "show"
-                                );
+                <button
+                    class="nav-logout"
+                    id="navLogout"
+                >
+                    Logout
+                </button>
 
-                            }
+                <a
+                    href="premium.html"
+                    class="nav-premium"
+                >
+                    Get Premium
+                </a>
+            `;
+
+            document
+                .getElementById("navLogout")
+                .addEventListener(
+                    "click",
+                    async () => {
+
+                        try {
+
+                            await fetch(
+                                "/api/logout",
+                                {
+                                    method: "POST",
+                                    credentials: "same-origin"
+                                }
+                            );
+
+                        } catch (error) {
+
+                            console.error(error);
 
                         }
-                    );
 
-                },
-                {
-                    threshold: 0.15
-                }
-            );
+                        window.location.reload();
 
+                    }
+                );
 
-        cards.forEach(
-            (card) => observer.observe(card)
-        );
+        }
 
-    </script>
+    } catch (error) {
 
+        console.error(error);
+
+    }
+
+}
+
+updateNavbar();
+</script>
 </body>
 </html>
