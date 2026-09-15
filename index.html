@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Task Manager — Plan. Focus. Finish.</title>
 
     <style>
@@ -20,182 +19,125 @@
 
         body {
             background: #080a0f;
-            color: white;
+            color: #ffffff;
             overflow-x: hidden;
         }
 
         a {
             text-decoration: none;
         }
-        /* ================= CLEAN HOME ================= */
 
-        #features {
-    padding-top: 95px;
-}
+        button {
+            font-family: inherit;
+        }
 
-        #themes {
-    padding-top: 95px;
-}
-
-        .premium-section {
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-        .download {
-    padding-top: 85px;
-    padding-bottom: 95px;
-}
-
-        /* ================= NAV ================= */
+        /* ================= NAVBAR ================= */
 
         nav {
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
-
             width: 100%;
-            height: 74px;
-
-            padding: 0 7%;
-
+            height: 72px;
+            padding: 0 6%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            background: rgba(8, 10, 15, 0.74);
+            background: rgba(8, 10, 15, 0.78);
             backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(255,255,255,.06);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-
             color: white;
             font-weight: bold;
-            font-size: 19px;
+            font-size: 18px;
         }
 
         .logo-box {
             width: 40px;
             height: 40px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 11px;
-
-            background: linear-gradient(
-                145deg,
-                #4aa9ff,
-                #1778ff
-            );
-
+            background: linear-gradient(145deg, #48a9ff, #1977ff);
             font-size: 23px;
             font-weight: 900;
-
-            box-shadow:
-                0 0 28px rgba(40,140,255,.28);
-
-            transition: .3s;
+            box-shadow: 0 0 28px rgba(40, 140, 255, .22);
+            transition: .3s ease;
         }
 
-        .logo-box:hover {
+        .logo:hover .logo-box {
             transform: scale(1.06) rotate(-4deg);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 28px;
         }
 
         .nav-links a {
             color: #8e97a6;
             font-size: 14px;
-            transition: .25s;
+            transition: .25s ease;
         }
 
         .nav-links a:hover {
             color: white;
         }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-        }
-
-        .nav-signin {
-            padding: 10px 14px;
-            color: #aeb7c4;
+        .nav-download {
+            padding: 10px 15px;
             border-radius: 9px;
-            transition: .25s;
-        }
-
-        .nav-signin:hover {
-            color: white;
-            background: #121720;
-        }
-
-        .nav-premium {
-            padding: 11px 16px;
-            border-radius: 9px;
-
             background: white;
-            color: #080a0f;
-
-            font-size: 13px;
+            color: #080a0f !important;
+            font-size: 13px !important;
             font-weight: bold;
+            transition: .25s ease;
+        }
+
+        .nav-download:hover {
+            transform: translateY(-2px);
         }
 
         /* ================= HERO ================= */
 
         .hero {
             min-height: 100vh;
-
-            padding: 145px 7% 95px;
-
+            padding: 145px 6% 85px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
-
-            gap: 65px;
-
+            gap: 60px;
             position: relative;
         }
 
         .hero::before {
             content: "";
-
             position: absolute;
-
             width: 650px;
             height: 650px;
-
-            left: -260px;
-            top: 20px;
-
+            left: -280px;
+            top: 30px;
             border-radius: 50%;
-
-            background: rgba(25,125,255,.10);
-
+            background: rgba(25, 125, 255, .09);
             filter: blur(150px);
-
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 630px;
-
-            animation: heroTextIn 1s ease forwards;
+            max-width: 650px;
+            animation: heroIn .8s ease both;
         }
 
-        @keyframes heroTextIn {
+        @keyframes heroIn {
             from {
                 opacity: 0;
                 transform: translateY(35px);
@@ -210,30 +152,20 @@
         .eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-
             padding: 8px 13px;
-
-            border: 1px solid #243449;
+            border: 1px solid #30445c;
             border-radius: 100px;
-
-            background: rgba(14,24,38,.65);
-
+            background: rgba(14, 24, 38, .65);
             color: #70bcff;
-
             font-size: 12px;
-
             margin-bottom: 22px;
         }
 
         .hero h1 {
-            font-size: clamp(58px, 7vw, 88px);
-
-            line-height: .91;
-
+            font-size: clamp(54px, 7vw, 88px);
+            line-height: .92;
             letter-spacing: -4px;
-
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         .hero h1 span {
@@ -241,123 +173,109 @@
         }
 
         .hero-text {
-            max-width: 535px;
-
+            max-width: 560px;
             color: #8d97a7;
-
             font-size: 18px;
-
             line-height: 1.75;
-
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 11px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-
             padding: 14px 21px;
-
             border-radius: 10px;
-
             font-weight: bold;
+            transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+        }
 
-            transition: .3s;
+        .btn:hover {
+            transform: translateY(-3px);
         }
 
         .btn-primary {
             color: white;
             background: #278dff;
-
-            box-shadow:
-                0 10px 35px rgba(39,141,255,.22);
+            box-shadow: 0 10px 35px rgba(39, 141, 255, .20);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 17px 45px rgba(39,141,255,.34);
+            box-shadow: 0 16px 45px rgba(39, 141, 255, .32);
         }
 
         .btn-secondary {
             color: white;
-
             background: #141820;
-
             border: 1px solid #2a303b;
         }
 
         .btn-secondary:hover {
-            transform: translateY(-3px);
             background: #1b2029;
         }
 
         .hero-note {
-            margin-top: 20px;
-
+            margin-top: 18px;
             color: #586272;
-
             font-size: 12px;
         }
 
-        /* ================= APP CARD ================= */
+        .hero-free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 18px;
+            padding: 8px 12px;
+            border: 1px solid #234361;
+            border-radius: 999px;
+            background: rgba(12, 25, 40, .72);
+            color: #79c0ff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ================= APP PREVIEW ================= */
 
         .hero-preview {
-            animation: previewIn 1.15s ease forwards;
+            animation: previewIn .95s .08s ease both;
         }
 
         @keyframes previewIn {
             from {
                 opacity: 0;
-                transform: translateX(45px) rotateY(-7deg);
+                transform: translateX(45px);
             }
 
             to {
                 opacity: 1;
-                transform: translateX(0) rotateY(-4deg);
+                transform: translateX(0);
             }
         }
 
         .app-card {
             padding: 17px;
-
             border-radius: 22px;
-
             background: #151820;
-
             border: 1px solid #2b323f;
-
-            box-shadow:
-                0 45px 100px rgba(0,0,0,.5),
-                0 0 70px rgba(40,140,255,.07);
-
-            transform:
-                perspective(1300px)
-                rotateY(-4deg);
-
-            transition: .5s;
+            box-shadow: 0 45px 100px rgba(0, 0, 0, .50), 0 0 70px rgba(40, 140, 255, .07);
+            transform: perspective(1300px) rotateY(-4deg);
+            transition: .5s ease;
         }
 
         .app-card:hover {
-            transform:
-                perspective(1300px)
-                rotateY(0deg)
-                translateY(-7px);
+            transform: perspective(1300px) rotateY(0deg) translateY(-8px);
         }
 
         .window-bar {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-
+            justify-content: space-between;
             margin-bottom: 16px;
         }
 
@@ -369,17 +287,12 @@
         .window-theme {
             width: 32px;
             height: 32px;
-
             display: flex;
-            justify-content: center;
             align-items: center;
-
+            justify-content: center;
             border-radius: 9px;
-
             background: #222834;
-
             color: #58abff;
-
             font-weight: 900;
         }
 
@@ -387,17 +300,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
+            gap: 15px;
             padding: 14px;
-
             border: 1px solid #292f39;
             border-radius: 11px;
-
             background: #101319;
-
             margin-bottom: 9px;
-
-            transition: .3s;
+            transition: .3s ease;
         }
 
         .preview-task:hover {
@@ -409,730 +318,456 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
 
         .fake-check {
             width: 18px;
             height: 18px;
-
+            flex-shrink: 0;
             border: 2px solid #3c92ea;
-
             border-radius: 5px;
         }
 
         .preview-task-name {
             font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .preview-task-time {
+        .preview-meta {
             color: #788293;
-            font-size: 12px;
+            font-size: 11px;
+            flex-shrink: 0;
+            text-align: right;
+            line-height: 1.45;
         }
 
-        .preview-timer {
-            margin-top: 16px;
-
-            padding: 21px;
-
-            text-align: center;
-
+        .preview-info {
+            margin-top: 15px;
+            padding: 18px;
             border-radius: 12px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #17202c,
-                    #10141a
-                );
-
+            background: linear-gradient(145deg, #17202c, #10141a);
             border: 1px solid #2a3846;
+            text-align: center;
         }
 
-        .preview-timer-label {
+        .preview-info-title {
             color: #778294;
             font-size: 10px;
+            margin-bottom: 7px;
         }
 
-        .preview-timer-time {
-            margin-top: 7px;
-
-            font-size: 34px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
-        }
-
-        /* ================= STATS STRIP ================= */
-
-        .stats-strip {
-            padding: 0 7% 75px;
-        }
-
-        .stats {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            border-top: 1px solid #202631;
-            border-bottom: 1px solid #202631;
-        }
-
-        .stat {
-            padding: 25px;
-
-            text-align: center;
-
-            border-right: 1px solid #202631;
-        }
-
-        .stat:last-child {
-            border-right: none;
-        }
-
-        .stat-number {
-            font-size: 27px;
+        .preview-info-text {
+            font-size: 16px;
             font-weight: bold;
         }
 
-        .stat-text {
-            margin-top: 5px;
-
-            color: #6f7989;
-
-            font-size: 12px;
-        }
-
-        /* ================= SECTIONS ================= */
+        /* ================= SECTION ================= */
 
         section {
-            padding: 110px 7%;
+            padding: 100px 6%;
         }
 
         .section-label {
-            color: #459eff;
-
             text-align: center;
-
+            color: #459eff;
             font-size: 12px;
             font-weight: bold;
-
             margin-bottom: 10px;
         }
 
         .section-title {
             text-align: center;
-
-            font-size: 43px;
-
-            letter-spacing: -1px;
+            font-size: clamp(34px, 5vw, 45px);
+            letter-spacing: -1.5px;
         }
 
         .section-description {
-            max-width: 590px;
-
-            margin: 14px auto 48px;
-
+            max-width: 610px;
+            margin: 14px auto 45px;
             text-align: center;
-
             color: #7e8898;
-
             line-height: 1.7;
-        }
-
-        /* ================= WHY ================= */
-
-        .why-section {
-            background:
-                linear-gradient(
-                    180deg,
-                    #080a0f,
-                    #0b0f16
-                );
-        }
-
-        .why-layout {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: 1.1fr .9fr;
-
-            gap: 22px;
-        }
-
-        .why-big,
-        .why-small {
-            border: 1px solid #252c36;
-
-            background: #11151c;
-
-            border-radius: 19px;
-
-            transition: .35s;
-        }
-
-        .why-big {
-            padding: 38px;
-        }
-
-        .why-small {
-            padding: 27px;
-        }
-
-        .why-big:hover,
-        .why-small:hover {
-            transform: translateY(-5px);
-
-            border-color: #3b719b;
-        }
-
-        .why-big h3 {
-            font-size: 31px;
-
-            margin-bottom: 15px;
-        }
-
-        .why-big p,
-        .why-small p {
-            color: #808a9a;
-
-            line-height: 1.75;
-
-            font-size: 14px;
-        }
-
-        .why-list {
-            margin-top: 27px;
-
-            display: grid;
-
-            gap: 14px;
-        }
-
-        .why-item {
-            display: flex;
-            gap: 11px;
-            align-items: flex-start;
-        }
-
-        .why-check {
-            width: 23px;
-            height: 23px;
-
-            flex-shrink: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 7px;
-
-            background: #172a40;
-
-            color: #54a9ff;
-
-            font-size: 12px;
-        }
-
-        .why-item span {
-            color: #a7afbc;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-        }
-
-        .why-right {
-            display: grid;
-            gap: 22px;
-        }
-
-        .mini-label {
-            display: inline-block;
-
-            color: #55aaff;
-
-            font-size: 11px;
-
-            margin-bottom: 11px;
-        }
-
-        .why-small h4 {
-            margin-bottom: 9px;
-
-            font-size: 19px;
         }
 
         /* ================= FEATURES ================= */
 
+        #features {
+            background: #0b0f15;
+        }
+
         .features {
             max-width: 1100px;
-
             margin: auto;
-
             display: grid;
-
-            grid-template-columns: repeat(4,1fr);
-
-            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         .feature-card {
             padding: 27px;
-
             background: #11141a;
-
             border: 1px solid #242a34;
-
             border-radius: 17px;
-
-            transition: .35s;
-
-            opacity: 0;
-
-            transform: translateY(25px);
+            animation: cardIn .65s ease both;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
         }
 
-.feature-card {
-    padding: 27px;
+        .feature-card:nth-child(2) { animation-delay: .08s; }
+        .feature-card:nth-child(3) { animation-delay: .16s; }
+        .feature-card:nth-child(4) { animation-delay: .24s; }
+        .feature-card:nth-child(5) { animation-delay: .32s; }
+        .feature-card:nth-child(6) { animation-delay: .40s; }
 
-    background: #11141a;
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
 
-    border: 1px solid #242a34;
-
-    border-radius: 17px;
-
-    opacity: 1;
-    transform: translateY(0);
-
-    animation: featureIn .6s ease both;
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
-
-.feature-card:nth-child(2) {
-    animation-delay: .08s;
-}
-
-.feature-card:nth-child(3) {
-    animation-delay: .16s;
-}
-
-.feature-card:nth-child(4) {
-    animation-delay: .24s;
-}
-
-@keyframes featureIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .feature-card:hover {
             transform: translateY(-7px);
-
             border-color: #3b769d;
-
-            box-shadow:
-                0 20px 50px rgba(0,0,0,.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .22);
         }
 
         .feature-icon {
             width: 45px;
             height: 45px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 12px;
-
             background: #152335;
-
             color: #58acff;
-
             margin-bottom: 18px;
+            font-size: 20px;
         }
 
         .feature-card h3 {
             font-size: 17px;
-
             margin-bottom: 9px;
         }
 
         .feature-card p {
             color: #798392;
-
             font-size: 13px;
-
             line-height: 1.65;
         }
 
-        /* ================= TIMER SHOWCASE ================= */
-
-        .timer-showcase {
-            max-width: 1000px;
-
-            margin: auto;
-
-            min-height: 330px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-
-            border-radius: 24px;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(43,145,255,.12),
-                    transparent 52%
-                );
-
-            border: 1px solid #26303d;
-        }
-
-        .timer-ring {
-            width: 230px;
-            height: 230px;
-
-            border-radius: 50%;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #111720 55%,
-                    transparent 56%
-                );
-
-            border: 2px solid #267fc7;
-
-            box-shadow:
-                0 0 45px rgba(39,137,255,.14);
-
-            animation: pulseRing 2.5s ease-in-out infinite;
-        }
-
-        @keyframes pulseRing {
-
-            0%, 100% {
-                box-shadow:
-                    0 0 35px rgba(39,137,255,.10);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 65px rgba(39,137,255,.22);
-            }
-        }
-
-        .timer-ring small {
-            color: #6e7a8b;
-
-            font-size: 11px;
-        }
-
-        .showcase-time {
-            font-size: 38px;
-
-            font-weight: bold;
-
-            margin-top: 8px;
-
-            letter-spacing: 2px;
-        }
-
-        .timer-copy {
-            max-width: 320px;
-
-            margin-left: 65px;
-        }
-
-        .timer-copy h3 {
-            font-size: 28px;
-
-            margin-bottom: 12px;
-        }
-
-        .timer-copy p {
-            color: #7d8797;
-
-            line-height: 1.7;
-
-            font-size: 14px;
-        }
-
-        /* ================= REAL APP ================= */
+        /* ================= APP ================= */
 
         .app-section {
-            background: #0b0f15;
+            background: #080a0f;
         }
 
         .real-app {
             max-width: 1080px;
-
             margin: auto;
-
             padding: 10px;
-
             border-radius: 23px;
-
             background: #11151c;
-
             border: 1px solid #2a313c;
-
-            box-shadow:
-                0 35px 100px rgba(0,0,0,.4);
-
-            transition: .4s;
-        }
-
-        .real-app:hover {
-            transform: translateY(-6px);
+            box-shadow: 0 35px 100px rgba(0, 0, 0, .40);
+            animation: cardIn .7s ease both;
         }
 
         .screenshot-placeholder {
-            min-height: 510px;
-
+            min-height: 430px;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #171c25,
-                    #0e1117
-                );
-
+            background: linear-gradient(145deg, #171c25, #0e1117);
             color: #6c7788;
-
             font-size: 17px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .app-highlight-row {
+            max-width: 1080px;
+            margin: 22px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .app-highlight {
+            padding: 20px;
+            border-radius: 15px;
+            background: #11141a;
+            border: 1px solid #242a34;
+            color: #929cac;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .app-highlight strong {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-size: 14px;
         }
 
         /* ================= THEMES ================= */
 
+        #themes {
+            background: #0b0f15;
+        }
+
         .themes {
             max-width: 1100px;
-
             margin: auto;
-
             display: grid;
-
-            grid-template-columns: repeat(5,1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 13px;
         }
 
         .theme-card {
             padding: 15px;
-
             background: #11141a;
-
             border: 1px solid #242a34;
-
             border-radius: 16px;
-
-            transition: .35s;
+            transition: .3s ease;
+            animation: cardIn .7s ease both;
         }
 
         .theme-card:hover {
             transform: translateY(-7px);
-
             border-color: #3b718f;
         }
 
         .theme-name {
             font-size: 13px;
-
             font-weight: bold;
-
             margin-bottom: 12px;
         }
 
         .theme-window {
             height: 145px;
-
             padding: 12px;
-
             border-radius: 10px;
-
             font-size: 10px;
+            line-height: 1.5;
         }
 
-        .normal {
-            background: #f1f1f1;
-            color: #222;
+        .theme-window .mini-date {
+            opacity: .65;
+            font-size: 9px;
         }
 
-        .dark {
-            background: #1e1e1e;
-            color: white;
-        }
-
-        .ocean {
-            background: #dff6ff;
-            color: #123456;
-        }
-
-        .forest {
-            background: #e8f5e9;
-            color: #1b4332;
-        }
-
-        .sunset {
-            background: #fff1e6;
-            color: #6d3b2a;
-        }
-
-        /* ================= PREMIUM CTA ================= */
-
-        .premium-section {
-            padding-top: 95px;
-            padding-bottom: 95px;
-        }
-
-        .premium-box {
-            max-width: 1050px;
-
-            margin: auto;
-
-            padding: 68px 40px;
-
-            border-radius: 25px;
-
-            text-align: center;
-
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #171d27,
-                    #0c1016
-                );
-
-            border: 1px solid #303846;
-
-            box-shadow:
-                0 35px 90px rgba(0,0,0,.35);
-        }
-
-        .premium-box::before {
-            content: "";
-
-            position: absolute;
-
-            width: 350px;
-            height: 350px;
-
-            top: -180px;
-            right: -100px;
-
-            border-radius: 50%;
-
-            background: rgba(38,143,255,.12);
-
-            filter: blur(90px);
-        }
-
-        .premium-box h2,
-        .premium-box p,
-        .premium-box a {
-            position: relative;
-        }
-
-        .premium-box h2 {
-            font-size: 46px;
-
-            margin-bottom: 13px;
-        }
-
-        .premium-box p {
-            max-width: 590px;
-
-            margin: auto auto 25px;
-
-            color: #8791a0;
-
-            line-height: 1.7;
-        }
-
-        .premium-price {
-            margin-bottom: 25px;
-
-            font-weight: bold;
-
-            font-size: 14px;
-
-            color: #69b5ff;
-        }
+        .normal { background: #f0f0f0; color: #222222; }
+        .dark { background: #1e1e1e; color: white; }
+        .light { background: #ffffff; color: #222222; }
+        .ocean { background: #dff6ff; color: #123456; }
+        .forest { background: #e8f5e9; color: #1b4332; }
+        .sunset { background: #fff1e6; color: #6d3b2a; }
+        .midnight { background: #10131a; color: #f4f7ff; }
+        .purple { background: #f3edff; color: #38205f; }
+        .rose { background: #fff0f5; color: #64233a; }
 
         /* ================= DOWNLOAD ================= */
 
-        .download {
+        .download-section {
+            background: #080a0f;
             text-align: center;
+            padding-top: 100px;
+            padding-bottom: 110px;
         }
 
-        .download-buttons {
-            margin-top: 24px;
+        .free-callout {
+            max-width: 850px;
+            margin: 0 auto 45px;
+            padding: 22px 26px;
+            border-radius: 17px;
+            border: 1px solid #26384c;
+            background: linear-gradient(145deg, #121b26, #0d131b);
+            color: #9aa7b7;
+            line-height: 1.7;
         }
 
-        .download-buttons a {
-            margin: 5px;
+        .free-callout strong {
+            color: #ffffff;
+        }
+
+        .download-grid {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .download-card {
+            padding: 30px;
+            background: #11151c;
+            border: 1px solid #252d38;
+            border-radius: 18px;
+            animation: cardIn .7s ease both;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+
+        .download-card:nth-child(2) { animation-delay: .08s; }
+        .download-card:nth-child(3) { animation-delay: .16s; }
+
+        .download-card:hover {
+            transform: translateY(-8px);
+            border-color: #3b8bd6;
+            box-shadow: 0 20px 55px rgba(0, 0, 0, .25);
+        }
+
+        .download-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #17283d;
+            color: #55aaff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .download-card h3 {
+            font-size: 20px;
+            margin-bottom: 9px;
+        }
+
+        .download-card p {
+            color: #7f8998;
+            font-size: 13px;
+            line-height: 1.7;
+            min-height: 48px;
+            margin-bottom: 20px;
+        }
+
+        .download-card .btn {
+            width: 100%;
         }
 
         /* ================= FOOTER ================= */
 
         footer {
-            padding: 30px 7%;
-
+            padding: 28px 6%;
             display: flex;
-
+            align-items: center;
             justify-content: space-between;
-
             border-top: 1px solid #20252e;
-
             color: #667183;
-
             font-size: 12px;
+        }
+
+        /* ================= MOBILE MENU ================= */
+
+        .mobile-menu-button {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #2c343f;
+            border-radius: 10px;
+            background: #11161d;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .mobile-menu-button:hover {
+            background: #171d25;
+            border-color: #3c4a5a;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 82px;
+            left: 5%;
+            right: 5%;
+            z-index: 1100;
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(17, 21, 28, 0.72);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, .10);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .45), 0 0 35px rgba(39, 141, 255, .08);
+            animation: mobileMenuIn .22s ease both;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        @keyframes mobileMenuIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .mobile-menu a {
+            width: 100%;
+            display: block;
+            padding: 13px 14px;
+            margin: 0 0 6px;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            color: #aeb7c4;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, .07);
+            color: white;
+            transform: translateX(3px);
         }
 
         /* ================= RESPONSIVE ================= */
 
-        @media(max-width: 1050px) {
+        @media (max-width: 1050px) {
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
 
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero-content {
+                margin: auto;
             }
 
             .hero-text {
@@ -1144,53 +779,45 @@
                 justify-content: center;
             }
 
-            .hero-note {
-                text-align: center;
-            }
-
             .hero-preview {
-                max-width: 720px;
                 width: 100%;
+                max-width: 720px;
                 margin: auto;
             }
 
             .features {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .themes {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .why-layout {
-                grid-template-columns: 1fr;
+            .download-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .timer-showcase {
-                flex-direction: column;
-                gap: 35px;
-                padding: 50px 20px;
-            }
-
-            .timer-copy {
-                margin-left: 0;
-                text-align: center;
+            .download-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 500px;
+                width: 100%;
+                margin: auto;
             }
         }
 
-        @media(max-width: 700px) {
-
+        @media (max-width: 700px) {
             nav {
-                padding: 0 5%;
+                height: 68px;
             }
 
-            .nav-links {
-                display: none;
+            .logo {
+                font-size: 16px;
             }
 
-            .nav-premium,
-            .nav-signin {
-                display: none;
+            .logo-box {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
             }
 
             section {
@@ -1198,252 +825,105 @@
             }
 
             .hero {
-                padding-left: 5%;
-                padding-right: 5%;
+                min-height: auto;
+                padding-top: 120px;
+                padding-bottom: 70px;
             }
 
             .hero h1 {
-                font-size: 58px;
+                font-size: 55px;
                 letter-spacing: -3px;
             }
 
-            .stats {
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .features {
                 grid-template-columns: 1fr;
             }
 
-            .stat {
-                border-right: none;
-                border-bottom: 1px solid #202631;
+            .app-highlight-row {
+                grid-template-columns: 1fr;
             }
 
-            .stat:last-child {
-                border-bottom: none;
-            }
-
-            .features,
             .themes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .download-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 34px;
+            .download-card:last-child {
+                grid-column: auto;
+                max-width: none;
             }
 
-            .premium-box {
-                padding: 50px 25px;
-            }
-
-            .premium-box h2 {
-                font-size: 34px;
+            .screenshot-placeholder {
+                min-height: 280px;
+                font-size: 14px;
             }
 
             footer {
                 flex-direction: column;
-                text-align: center;
                 gap: 10px;
+                text-align: center;
             }
-            /* ================= DOWNLOAD ================= */
-
-        .download-section {
-    padding: 100px 7% 110px;
-    text-align: center;
-}
-
-        .download-grid {
-    max-width: 1050px;
-    margin: 45px auto 0;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-        .download-card {
-    padding: 30px;
-
-    background: #11151c;
-    border: 1px solid #252d38;
-
-    border-radius: 18px;
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-}
-
-        .download-card:hover {
-    transform: translateY(-8px);
-
-    border-color: #3b8bd6;
-
-    box-shadow:
-        0 20px 55px rgba(0,0,0,.25);
-}
-
-        .download-icon {
-    width: 52px;
-    height: 52px;
-
-    margin: 0 auto 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #17283d;
-
-    color: #55aaff;
-
-    font-size: 24px;
-    font-weight: bold;
-}
-
-        .download-card h3 {
-    font-size: 20px;
-    margin-bottom: 9px;
-}
-
-        .download-card p {
-    color: #7f8998;
-
-    font-size: 13px;
-    line-height: 1.7;
-
-    min-height: 46px;
-
-    margin-bottom: 20px;
-}
-
-        .download-card .btn {
-    width: 100%;
-}
         }
-        @media(max-width: 800px) {
 
-        .download-grid {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 450px) {
+            .hero h1 {
+                font-size: 47px;
+            }
 
-}
-         /* ================= GLOBAL ANIMATIONS ================= */
+            .themes {
+                grid-template-columns: 1fr;
+            }
 
-@keyframes pageFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
+            .theme-window {
+                height: 130px;
+            }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            .app-card {
+                transform: none;
+            }
 
-body {
-    animation: pageFadeIn .7s ease both;
-}
+            .app-card:hover {
+                transform: translateY(-4px);
+            }
 
-.btn,
-.download-card,
-.feature-card,
-.theme-card,
-.premium-box,
-.app-card,
-.real-app {
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease,
-        background .3s ease;
-}
+            .preview-task {
+                padding: 12px;
+            }
 
-.btn:hover {
-    transform: translateY(-3px);
-}
+            .preview-task-name {
+                font-size: 12px;
+            }
 
-.download-card,
-.feature-card,
-.theme-card {
-    will-change: transform;
-}
+            .preview-meta {
+                font-size: 9px;
+            }
+        }
 
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-}
-    .nav-signin {
-    padding: 10px 14px;
-    color: #aeb7c4;
-    border-radius: 9px;
-    transition: .25s;
-}
-
-.nav-signin:hover {
-    color: white;
-    background: #121720;
-}
-.nav-signin {
-    padding: 10px 14px;
-
-    color: #aeb7c4;
-
-    border-radius: 9px;
-
-    transition: .25s;
-}
-
-.nav-signin:hover {
-    color: white;
-    background: #121720;
-}
-
-.nav-account {
-    padding: 10px 14px;
-
-    color: #aeb7c4;
-
-    border-radius: 9px;
-
-    transition: .25s;
-}
-
-.nav-account:hover {
-    color: white;
-    background: #121720;
-}
-
-.nav-logout {
-    padding: 10px 14px;
-
-    border-radius: 9px;
-
-    border: 1px solid #2c343f;
-
-    background: #161b23;
-
-    color: #adb6c2;
-
-    cursor: pointer;
-
-    transition: .25s;
-}
-
-.nav-logout:hover {
-    background: #1c222c;
-    color: white;
-}
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 
@@ -1452,65 +932,45 @@ body {
     <!-- ================= NAVBAR ================= -->
 
     <nav>
-
-        <a href="#" class="logo">
-
-            <div class="logo-box">
-                T
-            </div>
-
+        <a href="index.html" class="logo">
+            <div class="logo-box">T</div>
             Task Manager
-
         </a>
 
-
         <div class="nav-links">
-
-            <a href="#features">
-                Features
-            </a>
-
-            <a href="#app">
-                App
-            </a>
-
-            <a href="#themes">
-                Themes
-            </a>
-
-            <a href="premium.html">
-                Premium
-            </a>
-
+            <a href="#features">Features</a>
+            <a href="#app">App</a>
+            <a href="#themes">Themes</a>
+            <a href="#download" class="nav-download">Download</a>
         </div>
 
-
-<div class="nav-right" id="navRight">
-
-    <a href="auth.html" class="nav-signin" id="signInButton">
-        Sign In
-    </a>
-
-
-    <a href="premium.html" class="nav-premium">
-        Get Premium
-    </a>
-
-</div>
-
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
     </nav>
 
+    <!-- ================= MOBILE MENU ================= -->
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features">Features</a>
+        <a href="#app">App</a>
+        <a href="#themes">Themes</a>
+        <a href="#download">Download</a>
+    </div>
 
     <!-- ================= HERO ================= -->
 
     <section class="hero">
-
         <div class="hero-content">
-
             <div class="eyebrow">
                 ✦ Built for productivity
             </div>
-
 
             <h1>
                 Plan.<br>
@@ -1518,44 +978,36 @@ body {
                 Finish.
             </h1>
 
-
             <p class="hero-text">
                 A simple and powerful workspace for your tasks,
-                time and daily goals — without the unnecessary clutter.
+                time and daily goals — without unnecessary clutter.
             </p>
 
-
             <div class="hero-actions">
-
-                <a href="#app" class="btn btn-primary">
-                    Explore the App 
-                </a>
                 <a href="#download" class="btn btn-primary">
-                Download App ↓
+                    Download App ↓
                 </a>
 
                 <a href="#features" class="btn btn-secondary">
-                    See Features
+                    Explore Features
                 </a>
-
             </div>
-
 
             <div class="hero-note">
-                Available for Windows · macOS coming soon
+                Windows available soon · macOS and Mobile in development
             </div>
 
+            <div class="hero-free-badge">
+                ✓ Free to use · No account required
+            </div>
         </div>
 
-
-        <!-- APP PREVIEW -->
+        <!-- ================= APP PREVIEW ================= -->
 
         <div class="hero-preview">
-
             <div class="app-card">
 
                 <div class="window-bar">
-
                     <div class="window-title">
                         My Task Manager
                     </div>
@@ -1563,89 +1015,66 @@ body {
                     <div class="window-theme">
                         T
                     </div>
-
                 </div>
 
-
                 <div class="preview-task">
-
                     <div class="preview-task-left">
-
                         <div class="fake-check"></div>
-
                         <div class="preview-task-name">
                             Finish Python Project
                         </div>
-
                     </div>
 
-                    <div class="preview-task-time">
-                        08:30 PM
+                    <div class="preview-meta">
+                        ⏰ 08:30 PM<br>
+                        📅 2026-09-20
                     </div>
-
                 </div>
 
-
                 <div class="preview-task">
-
                     <div class="preview-task-left">
-
                         <div class="fake-check"></div>
-
                         <div class="preview-task-name">
                             Study
                         </div>
-
                     </div>
 
-                    <div class="preview-task-time">
-                        06:00 PM
+                    <div class="preview-meta">
+                        ⏰ 06:00 PM<br>
+                        📅 2026-09-21
                     </div>
-
                 </div>
 
-
                 <div class="preview-task">
-
                     <div class="preview-task-left">
-
                         <div class="fake-check"></div>
-
                         <div class="preview-task-name">
                             Work on Task Manager
                         </div>
-
                     </div>
 
-                    <div class="preview-task-time">
-                        09:00 PM
+                    <div class="preview-meta">
+                        ⏰ 09:00 PM<br>
+                        📅 2026-09-22
                     </div>
-
                 </div>
 
-
-                <div class="preview-timer">
-
-                    <div class="preview-timer-label">
-                        TIMER
+                <div class="preview-info">
+                    <div class="preview-info-title">
+                        FOCUS
                     </div>
 
-                    <div class="preview-timer-time">
-                        00:24:18
+                    <div class="preview-info-text">
+                        Simple tasks. Clear goals.
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <!-- ================= FEATURES ================= -->
 
     <section id="features">
-
         <div class="section-label">
             FEATURES
         </div>
@@ -1655,350 +1084,308 @@ body {
         </h2>
 
         <p class="section-description">
-            Simple tools designed to help you stay organized and focused.
+            Everything you need to organize tasks, time and daily plans — available for free.
         </p>
-
 
         <div class="features">
 
-
-            <div class="feature-card reveal">
-
-                <div class="feature-icon">
-                    ✓
-                </div>
-
-                <h3>
-                    Task Management
-                </h3>
-
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h3>Task Management</h3>
                 <p>
-                    Create, edit and remove tasks
-                    from one clean workspace.
+                    Create, edit and remove tasks from one clean workspace.
                 </p>
-
             </div>
 
-
-            <div class="feature-card reveal">
-
-                <div class="feature-icon">
-                    ⏱
-                </div>
-
-                <h3>
-                    Smart Timer
-                </h3>
-
+            <div class="feature-card">
+                <div class="feature-icon">⏱</div>
+                <h3>Built-in Timer</h3>
                 <p>
-                    Set hours, minutes and seconds
-                    and focus without distractions.
+                    Focus with a simple countdown for study, work and projects.
                 </p>
-
             </div>
 
-
-            <div class="feature-card reveal">
-
-                <div class="feature-icon">
-                    🔔
-                </div>
-
-                <h3>
-                    Notifications
-                </h3>
-
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Notifications</h3>
                 <p>
-                    Get notified when it is time
-                    to work on an important task.
+                    Get notified when it is time to work on an important task.
                 </p>
-
             </div>
 
-
-            <div class="feature-card reveal">
-
-                <div class="feature-icon">
-                    🎨
-                </div>
-
-                <h3>
-                    Themes
-                </h3>
-
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Task Dates</h3>
                 <p>
-                    Switch between multiple themes
-                    and personalize your workspace.
+                    Give tasks a date and organize your day with clearer planning.
                 </p>
+            </div>
 
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Nine Themes</h3>
+                <p>
+                    Choose from nine different themes and personalize your workspace.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">∞</div>
+                <h3>Unlimited Tasks</h3>
+                <p>
+                    Add as many tasks as you need without a Premium limit.
+                </p>
             </div>
 
         </div>
-
     </section>
 
-
-    <!-- ================= REAL APP ================= -->
+    <!-- ================= APP ================= -->
 
     <section id="app" class="app-section">
-
         <div class="section-label">
             THE APP
         </div>
 
         <h2 class="section-title">
-            See it in action.
+            Built to stay out of your way.
         </h2>
 
         <p class="section-description">
-            This is where we'll showcase the real Task Manager interface.
+            A clean desktop experience focused on the things that actually matter.
         </p>
 
-
         <div class="real-app">
-
             <div class="screenshot-placeholder">
-                Your real Task Manager screenshot
+                Real Task Manager screenshot coming here.
             </div>
-
         </div>
 
-    </section>
+        <div class="app-highlight-row">
+            <div class="app-highlight">
+                <strong>Unlimited tasks</strong>
+                Keep adding tasks without a limit.
+            </div>
 
+            <div class="app-highlight">
+                <strong>Dates + time</strong>
+                Plan exactly when a task matters.
+            </div>
+
+            <div class="app-highlight">
+                <strong>Local storage</strong>
+                Your task list stays saved on your computer.
+            </div>
+        </div>
+    </section>
 
     <!-- ================= THEMES ================= -->
 
     <section id="themes">
-
         <div class="section-label">
             PERSONALIZE
         </div>
 
         <h2 class="section-title">
-            Five moods. One workspace.
+            Nine themes.
         </h2>
 
         <p class="section-description">
-            Choose the theme that feels right for you.
+            Pick the look that feels right for your workspace.
         </p>
-
 
         <div class="themes">
 
-
             <div class="theme-card">
-
-                <div class="theme-name">
-                    Normal
-                </div>
-
+                <div class="theme-name">Normal</div>
                 <div class="theme-window normal">
                     My Task Manager<br><br>
                     ✓ Study<br>
                     ✓ Project<br>
-                    ✓ Workout
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
                 </div>
-
             </div>
 
-
             <div class="theme-card">
-
-                <div class="theme-name">
-                    Dark
-                </div>
-
+                <div class="theme-name">Dark</div>
                 <div class="theme-window dark">
                     My Task Manager<br><br>
                     ✓ Study<br>
                     ✓ Project<br>
-                    ✓ Workout
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
                 </div>
-
             </div>
 
+            <div class="theme-card">
+                <div class="theme-name">Light</div>
+                <div class="theme-window light">
+                    My Task Manager<br><br>
+                    ✓ Study<br>
+                    ✓ Project<br>
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
+                </div>
+            </div>
 
             <div class="theme-card">
-
-                <div class="theme-name">
-                    Ocean
-                </div>
-
+                <div class="theme-name">Ocean</div>
                 <div class="theme-window ocean">
                     My Task Manager<br><br>
                     ✓ Study<br>
                     ✓ Project<br>
-                    ✓ Workout
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
                 </div>
-
             </div>
 
-
             <div class="theme-card">
-
-                <div class="theme-name">
-                    Forest
-                </div>
-
+                <div class="theme-name">Forest</div>
                 <div class="theme-window forest">
                     My Task Manager<br><br>
                     ✓ Study<br>
                     ✓ Project<br>
-                    ✓ Workout
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
                 </div>
-
             </div>
 
-
             <div class="theme-card">
-
-                <div class="theme-name">
-                    Sunset
-                </div>
-
+                <div class="theme-name">Sunset</div>
                 <div class="theme-window sunset">
                     My Task Manager<br><br>
                     ✓ Study<br>
                     ✓ Project<br>
-                    ✓ Workout
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
                 </div>
+            </div>
 
+            <div class="theme-card">
+                <div class="theme-name">Midnight</div>
+                <div class="theme-window midnight">
+                    My Task Manager<br><br>
+                    ✓ Study<br>
+                    ✓ Project<br>
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-name">Purple</div>
+                <div class="theme-window purple">
+                    My Task Manager<br><br>
+                    ✓ Study<br>
+                    ✓ Project<br>
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-name">Rose</div>
+                <div class="theme-window rose">
+                    My Task Manager<br><br>
+                    ✓ Study<br>
+                    ✓ Project<br>
+                    ✓ Workout<br>
+                    <span class="mini-date">📅 2026-09-20</span>
+                </div>
             </div>
 
         </div>
-
     </section>
-
-
-    <!-- ================= PREMIUM ================= -->
-
-    <section class="premium-section">
-
-        <div class="premium-box">
-
-            <h2>
-                Need more control?
-            </h2>
-
-            <p>
-                Unlock unlimited tasks, task dates,
-                advanced customization and more with Premium.
-            </p>
-
-            <div class="premium-price">
-                Premium from $2.99 / month
-            </div>
-
-            <a href="premium.html" class="btn btn-primary">
-                Explore Premium 
-            </a>
-
-        </div>
-
-    </section>
-
 
     <!-- ================= DOWNLOAD ================= -->
 
     <section id="download" class="download-section">
-
-    <div class="section-label">
-        DOWNLOAD
-    </div>
-
-    <h2 class="section-title">
-        Get Task Manager.
-    </h2>
-
-    <p class="section-description">
-        Choose your platform and start organizing your day.
-    </p>
-
-    <div class="download-grid">
-
-        <div class="download-card">
-
-            <div class="download-icon">
-                ⊞
-            </div>
-
-            <h3>
-                Windows
-            </h3>
-
-            <p>
-                Download the desktop version for Windows.
-            </p>
-
-            <a
-                href="#"
-                class="btn btn-primary"
-                onclick="alert('Windows download will be available soon!'); return false;"
-            >
-                Download for Windows
-            </a>
-
+        <div class="section-label">
+            DOWNLOAD
         </div>
 
+        <h2 class="section-title">
+            Get Task Manager.
+        </h2>
 
-        <div class="download-card">
+        <p class="section-description">
+            Choose your platform and start organizing your day.
+        </p>
 
-            <div class="download-icon">
-                
-            </div>
-
-            <h3>
-                macOS
-            </h3>
-
-            <p>
-                The macOS version is currently in development.
-            </p>
-
-            <a
-                href="#"
-                class="btn btn-secondary"
-                onclick="alert('The macOS version is currently in development.'); return false;"
-            >
-                Coming Soon
-            </a>
-
+        <div class="free-callout">
+            <strong>Task Manager is completely free.</strong><br>
+            No account. No subscription. No Premium tier. Just the features you need to plan your day.
         </div>
 
+        <div class="download-grid">
 
-        <div class="download-card">
+            <!-- WINDOWS -->
 
-            <div class="download-icon">
-                ▣
+            <div class="download-card">
+                <div class="download-icon">⊞</div>
+
+                <h3>Windows</h3>
+
+                <p>
+                    The Windows version will be available soon.
+                </p>
+
+                <a
+                    href="#"
+                    class="btn btn-primary"
+                    onclick="alert('The Windows version will be available soon.'); return false;"
+                >
+                    Coming Soon
+                </a>
             </div>
 
-            <h3>
-                Mobile
-            </h3>
+            <!-- MACOS -->
 
-            <p>
-                The mobile version is currently in development.
-            </p>
+            <div class="download-card">
+                <div class="download-icon"></div>
 
-            <a
-                href="#"
-                class="btn btn-secondary"
-                onclick="alert('The mobile version is currently in development.'); return false;"
-            >
-                Coming Soon
-            </a>
+                <h3>macOS</h3>
+
+                <p>
+                    The macOS version is currently in development.
+                </p>
+
+                <a
+                    href="#"
+                    class="btn btn-secondary"
+                    onclick="alert('The macOS version is currently in development.'); return false;"
+                >
+                    Coming Soon
+                </a>
+            </div>
+
+            <!-- MOBILE -->
+
+            <div class="download-card">
+                <div class="download-icon">▣</div>
+
+                <h3>Mobile</h3>
+
+                <p>
+                    The mobile version is currently in development.
+                </p>
+
+                <a
+                    href="#"
+                    class="btn btn-secondary"
+                    onclick="alert('The mobile version is currently in development.'); return false;"
+                >
+                    Coming Soon
+                </a>
+            </div>
 
         </div>
-
-    </div>
-
-</section>
-
+    </section>
 
     <!-- ================= FOOTER ================= -->
 
     <footer>
-
         <div>
             © 2026 Task Manager
         </div>
@@ -2006,92 +1393,78 @@ body {
         <div>
             Plan. Focus. Finish.
         </div>
-
     </footer>
 
-<script>
-async function updateNavbar() {
+    <!-- ================= SCRIPT ================= -->
 
-    const navRight =
-        document.getElementById("navRight");
+    <script>
+        const mobileMenuButton =
+            document.getElementById("mobileMenuButton");
 
-    try {
+        const mobileMenu =
+            document.getElementById("mobileMenu");
 
-        const response =
-            await fetch("/api/me", {
-                credentials: "same-origin"
-            });
+        function closeMobileMenu() {
+            mobileMenu.classList.remove("open");
 
-        if (!response.ok) {
-            throw new Error("Could not check login status");
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
         }
 
-        const data =
-            await response.json();
+        function toggleMobileMenu() {
+            const isOpen =
+                mobileMenu.classList.toggle("open");
 
-        if (data.logged_in) {
-
-            navRight.innerHTML = `
-                <a
-                    href="account.html"
-                    class="nav-account"
-                >
-                    My Account
-                </a>
-
-                <button
-                    class="nav-logout"
-                    id="navLogout"
-                >
-                    Logout
-                </button>
-
-                <a
-                    href="premium.html"
-                    class="nav-premium"
-                >
-                    Get Premium
-                </a>
-            `;
-
-            document
-                .getElementById("navLogout")
-                .addEventListener(
-                    "click",
-                    async () => {
-
-                        try {
-
-                            await fetch(
-                                "/api/logout",
-                                {
-                                    method: "POST",
-                                    credentials: "same-origin"
-                                }
-                            );
-
-                        } catch (error) {
-
-                            console.error(error);
-
-                        }
-
-                        window.location.reload();
-
-                    }
-                );
-
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
         }
 
-    } catch (error) {
+        mobileMenuButton.addEventListener(
+            "click",
+            function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                toggleMobileMenu();
+            }
+        );
 
-        console.error(error);
+        mobileMenu.addEventListener(
+            "click",
+            function (event) {
+                const link =
+                    event.target.closest("a");
 
-    }
+                if (link) {
+                    closeMobileMenu();
+                }
+            }
+        );
 
-}
+        document.addEventListener(
+            "click",
+            function (event) {
+                if (
+                    !mobileMenu.contains(event.target) &&
+                    !mobileMenuButton.contains(event.target)
+                ) {
+                    closeMobileMenu();
+                }
+            }
+        );
 
-updateNavbar();
-</script>
+        document.addEventListener(
+            "keydown",
+            function (event) {
+                if (event.key === "Escape") {
+                    closeMobileMenu();
+                }
+            }
+        );
+    </script>
+
 </body>
 </html>
